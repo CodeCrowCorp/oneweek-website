@@ -1,11 +1,51 @@
-import type { Handle } from '@sveltejs/kit'
+import { redirect, type Handle } from '@sveltejs/kit'
+import { get as getWritableVal } from 'svelte/store'
+import { Authenticate } from '$lib/authentication/authentication'
+import { get } from '$lib/api'
+import { user_role } from '$lib/stores/userStore'
+import { env } from '$env/dynamic/public'
 
-export const handle: Handle = async ({ event, resolve }) => {
+import { init } from '@jill64/sentry-sveltekit-cloudflare/server'
+
+const { onHandle, onError } = init(env.PUBLIC_SENTRY_DSN || '', {
+	toucanOptions: {
+		tracesSampleRate: 1.0
+	},
+	handleOptions: {
+		handleUnknownRoutes: false
+	},
+	enableInDevMode: false
+})
+
+export const handle = onHandle(async ({ event, resolve }) => {
 	const pathname = event.url.pathname
 	const userId = event.url.searchParams.get('userId') || event.cookies.get('userId') || ''
-	const token = event.url.searchParams.get('token') || event.cookies.get('token') || ''
+	let token = event.url.searchParams.get('token') || event.cookies.get('token') || ''
+	let user: any = event.locals.user?.user || ''
+	const role = getWritableVal(user_role)
+	const maintenanceMode: boolean = env.PUBLIC_MAINTENANCE_MODE === 'true'
 
 	if (token && userId) {
+		if (!user) {
+			// const response = await get(`auth/me`, { userId, token })
+			// if (response) {
+			// 	if (response.freshJwt) {
+			// 		token = response.freshJwt
+			// 	}
+			// 	user = response.user
+			// }
+		} else {
+			if (user.isBanned) {
+				const cookieItem = ['token', 'userId', 'user']
+				cookieItem.forEach((item) => {
+					event.cookies.set(item, '', {
+						path: '/',
+						expires: new Date(0)
+					})
+				})
+			}
+		}
+
 		if (pathname === '/') {
 			event.cookies.set('token', token, {
 				path: '/',
@@ -16,23 +56,37 @@ export const handle: Handle = async ({ event, resolve }) => {
 				maxAge: 60 * 60 * 24 * 30
 			})
 		}
-
 		event.locals = {
 			user: {
-				userId,
-				token
+				userId: parseInt(userId),
+				token,
+				user
 			}
 		}
 	}
 
-	return await resolve(event)
-}
+	if (Authenticate({ pathname, user_role: role || 'user' })) {
+		if (maintenanceMode) {
+			if (pathname === '/maintenance') {
+				return await resolve(event)
+			} else {
+				redirect(302, '/maintenance')
+			}
+		} else {
+			if (pathname === '/maintenance') {
+				redirect(302, '/dashboard')
+			} else {
+				return await resolve(event)
+			}
+		}
+	} else {
+		return await resolve(event)
+	}
+})
 
-export const handleError = ({ error }: { error: any }) => {
-	console.log('error', error)
-	// example integration with https://sentry.io/
-	// Sentry.captureException(error, { event, errorId });
+export const handleError = onError((e, sentryEventId) => {
+	console.log('error', e)
 	return {
 		message: 'Whoops something went wrong!'
 	}
-}
+})
