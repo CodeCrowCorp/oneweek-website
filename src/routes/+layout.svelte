@@ -27,10 +27,12 @@
 <svelte:head>
 	<link rel="stylesheet" href="/fonts/montserrat.css" />
 	{@html `<script> 
-          const theme = localStorage.getItem('theme') || 'dark';
+          const theme = localStorage.getItem('theme') || 'black';
           document.querySelector('html').dataset.theme = theme;
         </script>`}
 </svelte:head>
 
-<Toolbar />
-<slot />
+<div class="sm:px-40">
+	<Toolbar />
+	<slot />
+</div>
