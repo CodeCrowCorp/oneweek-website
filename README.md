@@ -7,22 +7,20 @@
 <br>
 
 <p align="center">
-    <a href="https://github.com/CodeCrowCorp/cro-website"><img src="https://img.shields.io/github/v/release/CodeCrowCorp/cro-website?color=%23ff00a0&include_prereleases&label=version&sort=semver"></a>
+    <a href="https://github.com/CodeCrowCorp/oneweek-website"><img src="https://img.shields.io/github/v/release/CodeCrowCorp/oneweek-website?color=%23ff00a0&include_prereleases&label=version&sort=semver"></a>
     &nbsp;
-    <a href="https://github.com/CodeCrowCorp/cro-website"><img src="https://img.shields.io/badge/built_with-svelte-FF3E00.svg"></a>
+    <a href="https://github.com/CodeCrowCorp/oneweek-website"><img src="https://img.shields.io/badge/built_with-svelte-FF3E00.svg"></a>
     &nbsp;
-    <a href="https://github.com/CodeCrowCorp/cro-website/actions"><img src="https://github.com/CodeCrowCorp/cro-website-sv/actions/workflows/ci-prod.yml/badge.svg"></a>
-    &nbsp;
-    <a href="https://codecov.io/gh/CodeCrowCorp/cro-website/"><img src="https://codecov.io/gh/CodeCrowCorp/cro-website/branch/main/graph/badge.svg"></a>
+    <a href="https://github.com/CodeCrowCorp/oneweek-website/actions"><img src="https://github.com/CodeCrowCorp/oneweek-website-sv/actions/workflows/ci-prod.yml/badge.svg"></a>
     &nbsp;
     <a href="https://dependabot.com/"><img src="https://img.shields.io/badge/dependabot-enabled-025e8c?logo=Dependabot"></a>
     &nbsp;
 </p>
 
 <p align="center">
-    <a href="https://github.com/CodeCrowCorp/cro-website/blob/main/LICENSE.md"><img src="https://img.shields.io/badge/license-GPL3.0-00bfff.svg"></a>
+    <a href="https://github.com/CodeCrowCorp/oneweek-website/blob/main/LICENSE.md"><img src="https://img.shields.io/badge/license-GPL3.0-00bfff.svg"></a>
     &nbsp;
-	<a href="https://discord.gg/codecrow"><img src="https://img.shields.io/discord/766681806463303680?label=discord&color=5a66f6"></a>
+	<a href="https://discord.mage.stream"><img src="https://img.shields.io/discord/766681806463303680?label=discord&color=5a66f6"></a>
 	&nbsp;
     <a href="https://twitter.com/CodeCrowCorp"><img src="https://img.shields.io/badge/twitter-follow_us-1d9bf0.svg"></a>
     &nbsp;
