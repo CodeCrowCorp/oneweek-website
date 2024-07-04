@@ -41,7 +41,7 @@
 		"vite": "^5.0.10"
 	},
 	"dependencies": {
-		"@sentry/sveltekit": "^8.13.0",
+		"@jill64/sentry-sveltekit-cloudflare": "^1.7.15",
 		"@stripe/stripe-js": "^3.0.10",
 		"daisyui": "^4.7.2",
 		"nprogress": "^0.2.0",
