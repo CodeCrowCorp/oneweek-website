@@ -42,7 +42,7 @@
 	},
 	"dependencies": {
 		"@jill64/sentry-sveltekit-cloudflare": "^1.7.15",
-		"@stripe/stripe-js": "^3.0.10",
+		"@stripe/stripe-js": "^4.1.0",
 		"daisyui": "^4.7.2",
 		"nprogress": "^0.2.0",
 		"playwright-e2e-coverage-report": "^1.0.28",
