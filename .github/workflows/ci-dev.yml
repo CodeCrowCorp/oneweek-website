@@ -23,7 +23,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          npm install --force
+          npm install
           npx playwright install
 
       - name: Install Playwright Browser
