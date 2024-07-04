@@ -1,5 +1,3 @@
-import { sequence } from '@sveltejs/kit/hooks'
-import * as Sentry from '@sentry/sveltekit'
 import { redirect, type Handle } from '@sveltejs/kit'
 import { get as getWritableVal } from 'svelte/store'
 import { Authenticate } from '$lib/authentication/authentication'
@@ -7,12 +5,19 @@ import { get } from '$lib/api'
 import { user_role } from '$lib/stores/userStore'
 import { env } from '$env/dynamic/public'
 
-Sentry.init({
-	dsn: env.PUBLIC_SENTRY_DSN,
-	tracesSampleRate: 1
+import { init } from '@jill64/sentry-sveltekit-cloudflare/server'
+
+const { onHandle, onError } = init(env.PUBLIC_SENTRY_DSN || '', {
+	toucanOptions: {
+		tracesSampleRate: 1.0
+	},
+	handleOptions: {
+		handleUnknownRoutes: false
+	},
+	enableInDevMode: false
 })
 
-export const handle: Handle = sequence(Sentry.sentryHandle(), async ({ event, resolve }) => {
+export const handle = onHandle(async ({ event, resolve }) => {
 	const pathname = event.url.pathname
 	const userId = event.url.searchParams.get('userId') || event.cookies.get('userId') || ''
 	let token = event.url.searchParams.get('token') || event.cookies.get('token') || ''
@@ -79,4 +84,9 @@ export const handle: Handle = sequence(Sentry.sentryHandle(), async ({ event, re
 	}
 })
 
-export const handleError = Sentry.handleErrorWithSentry()
+export const handleError = onError((e, sentryEventId) => {
+	console.log('error', e)
+	return {
+		message: 'Whoops something went wrong!'
+	}
+})
