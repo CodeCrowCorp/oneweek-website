@@ -15,13 +15,17 @@
 		speed: 5,
 		trickleSpeed: 200
 	})
-	$: {
-		if ($navigating) {
-			NProgress.start()
+
+	let isNavigating = $state(navigating)
+	$effect(() => {
+		if (isNavigating) {
+			setTimeout(() => {
+				NProgress.start()
+			}, 3000)
 		} else {
 			NProgress.done()
 		}
-	}
+	})
 </script>
 
 <svelte:head>
@@ -34,5 +38,7 @@
 
 <div class="sm:px-40">
 	<Toolbar />
-	<slot />
+	<main>
+		<slot />
+	</main>
 </div>

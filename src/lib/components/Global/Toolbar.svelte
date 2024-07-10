@@ -1,4 +1,5 @@
 <script>
+	import { page } from '$app/stores'
 	import IconDownChevron from '$lib/assets/icons/IconDownChevron.svelte'
 	import IconMenu from '$lib/assets/icons/IconMenu.svelte'
 	import IconSearch from '$lib/assets/icons/IconSearch.svelte'
@@ -26,7 +27,9 @@
 				<!-- <li><a href="/reports">Reports</a></li> -->
 			</ul>
 		</div>
-		<a class="btn btn-ghost normal-case text-xl" href="/dashboard">OneWeek</a>
+		<a
+			class="btn btn-ghost normal-case text-xl"
+			href={$page.data.user?.userId ? '/dashboard' : '/landing'}>OneWeek</a>
 	</div>
 	<div class="navbar-center hidden lg:flex">
 		<ul class="menu menu-horizontal px-1">
@@ -50,7 +53,7 @@
 		</ul>
 	</div>
 	<div class="navbar-end"></div>
-	{#if false}
+	{#if $page.data.user?.userId}
 		<div class="flex-none gap-2">
 			<div class="form-control">
 				<label class="input input-bordered flex items-center gap-2">
@@ -61,9 +64,7 @@
 			<div class="dropdown dropdown-end">
 				<div tabindex="0" role="button" class="btn btn-ghost btn-square avatar">
 					<div class="w-10 rounded-md">
-						<img
-							alt="Tailwind CSS Navbar component"
-							src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+						<img alt="user avatar" src={$page.data.user.user.avatar} />
 					</div>
 				</div>
 				<ul
@@ -76,7 +77,12 @@
 						</a>
 					</li> -->
 					<li><a href="/settings">Settings</a></li>
-					<li><a>Logout</a></li>
+					<!-- <li><a>Logout</a></li> -->
+					<form action="/logout" method="POST">
+						<li>
+							<button class="custom-menu-item" type="submit"> Logout </button>
+						</li>
+					</form>
 				</ul>
 			</div>
 		</div>

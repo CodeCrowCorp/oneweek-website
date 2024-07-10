@@ -27,13 +27,13 @@ export const handle = onHandle(async ({ event, resolve }) => {
 
 	if (token && userId) {
 		if (!user) {
-			// const response = await get(`auth/me`, { userId, token })
-			// if (response) {
-			// 	if (response.freshJwt) {
-			// 		token = response.freshJwt
-			// 	}
-			// 	user = response.user
-			// }
+			const response = await get(`auth/me`, { userId, token })
+			if (response) {
+				if (response.freshJwt) {
+					token = response.freshJwt
+				}
+				user = response.user
+			}
 		} else {
 			if (user.isBanned) {
 				const cookieItem = ['token', 'userId', 'user']
