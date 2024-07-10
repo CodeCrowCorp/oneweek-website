@@ -12,7 +12,7 @@
 	<div class="py-4 space-y-5 px-4 md:px-10">
 		{#if env.PUBLIC_CROSS_ORIGIN === 'false'}
 			<a
-				class="btn w-full bg-black hover:bg-gray-800 text-white gap-4 border-none"
+				class="btn w-full bg-black hover:bg-gray-800 text-white gap-4 border-none hover:text-white"
 				href="{env.PUBLIC_API_URL}/auth/github">
 				<IconSocialGitHubInverse />
 				Log in with GitHub</a>
@@ -28,7 +28,7 @@
 				Log in with Apple</a>
 		{:else}
 			<button
-				class="btn w-full bg-black hover:bg-gray-800 text-white gap-4 btn-outline"
+				class="btn w-full bg-black hover:bg-gray-800 text-white gap-4 btn-outline hover:text-white"
 				onclick={async () =>
 					await getHref({
 						provider: 'github',
