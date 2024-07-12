@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores'
 	import Footer from '$lib/components/Global/Footer.svelte'
 	import Login from '$lib/components/Global/Login.svelte'
 	let { data } = $props()
@@ -16,8 +17,10 @@
 	{:catch error}
 		<div>{error.message}</div>
 	{/await}
-	<div class="flex justify-center">
-		<Login />
-	</div>
+	{#if !$page.data.user?.userId}
+		<div class="flex justify-center">
+			<Login />
+		</div>
+	{/if}
 </div>
 <Footer />

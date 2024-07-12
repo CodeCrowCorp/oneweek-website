@@ -1,6 +1,7 @@
 <script>
 	import { page } from '$app/stores'
 	import IconDownChevron from '$lib/assets/icons/IconDownChevron.svelte'
+	import IconLogo from '$lib/assets/icons/IconLogo.svelte'
 	import IconMenu from '$lib/assets/icons/IconMenu.svelte'
 	import IconSearch from '$lib/assets/icons/IconSearch.svelte'
 </script>
@@ -29,7 +30,9 @@
 		</div>
 		<a
 			class="btn btn-ghost normal-case text-xl"
-			href={$page.data.user?.userId ? '/dashboard' : '/landing'}>OneWeek</a>
+			href={$page.data.user?.userId ? '/dashboard' : '/landing'}
+			><IconLogo /> <span class="hidden xl:inline">OneWeek</span>
+		</a>
 	</div>
 	<div class="navbar-center hidden lg:flex">
 		<ul class="menu menu-horizontal px-1">
@@ -77,6 +80,7 @@
 						</a>
 					</li> -->
 					<li><a href="/settings">Settings</a></li>
+					<li><a href="https://codecrow.io/legal" target="_blank">Legal</a></li>
 					<!-- <li><a>Logout</a></li> -->
 					<form action="/logout" method="POST">
 						<li>

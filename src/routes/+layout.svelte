@@ -16,12 +16,9 @@
 		trickleSpeed: 200
 	})
 
-	let isNavigating = $state(navigating)
 	$effect(() => {
-		if (isNavigating) {
-			setTimeout(() => {
-				NProgress.start()
-			}, 3000)
+		if ($navigating) {
+			NProgress.start()
 		} else {
 			NProgress.done()
 		}
@@ -30,10 +27,6 @@
 
 <svelte:head>
 	<link rel="stylesheet" href="/fonts/montserrat.css" />
-	{@html `<script> 
-          const theme = localStorage.getItem('theme') || 'black';
-          document.querySelector('html').dataset.theme = theme;
-        </script>`}
 </svelte:head>
 
 <div class="sm:px-40">
