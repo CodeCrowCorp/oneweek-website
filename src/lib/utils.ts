@@ -111,13 +111,15 @@ export const dataURLtoFile = (dataurl: string, filename: string) => {
 export const getHref = async ({
 	provider,
 	apiUrl,
-	xApiKey
+	xApiKey,
+	waitlistWorkType
 }: {
 	provider: string
 	apiUrl: string
 	xApiKey: string
+	waitlistWorkType: number
 }) => {
-	const response = await fetch(`${apiUrl}/auth/${provider}`, {
+	const response = await fetch(`${apiUrl}/auth/${provider}?workType=${waitlistWorkType}`, {
 		headers: {
 			Accept: '*/*',
 			'x-api-key': xApiKey

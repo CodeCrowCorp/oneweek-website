@@ -1,5 +1,6 @@
 import { redirect } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types'
+import { env } from '$env/dynamic/public'
 
 export const load = (() => {
 	// redirect the user
@@ -18,6 +19,6 @@ export const actions: Actions = {
 		})
 
 		// redirect the user
-		redirect(302, '/landing')
+		redirect(302, env.PUBLIC_FEATURE_WAITLIST ? '/waitlist' : '/landing')
 	}
 }
