@@ -73,8 +73,12 @@ export const handle = onHandle(async ({ event, resolve }) => {
 				redirect(302, '/maintenance')
 			}
 		} else {
-			if (pathname === '/maintenance') {
-				redirect(302, '/dashboard')
+			if (
+				pathname === '/maintenance' ||
+				(pathname === '/login' && userId) ||
+				(pathname === '/dashboard' && !userId)
+			) {
+				redirect(302, '/')
 			} else {
 				return await resolve(event)
 			}
