@@ -35,3 +35,9 @@
 		<slot />
 	</main>
 </div>
+
+<style>
+	:global(.btn-primary) {
+		color: #38bdf8 !important;
+	}
+</style>
