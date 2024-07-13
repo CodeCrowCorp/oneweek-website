@@ -22,11 +22,10 @@
 					class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
 					<div class="mr-auto place-self-center lg:col-span-7">
 						<h1
-							class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+							class="mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-6xl text-white">
 							A better freelance platform
 						</h1>
-						<p
-							class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+						<p class="max-w-2xl mb-6 font-light lg:mb-8 md:text-lg lg:text-xl text-gray-400">
 							4% job completion fee. You keep the rest. <br />No contract initiation fees. No
 							connect fees. No service fee tiers.
 						</p>
@@ -64,7 +63,7 @@
 						</form>
 						<div class="flex mt-4">
 							{#await data.lazy?.waitlistCount}
-								<div>Retrieving registered users count...</div>
+								<div>Retrieving registered users...</div>
 							{:then value}
 								<div class="flex gap-5">
 									<div class="flex gap-2">
