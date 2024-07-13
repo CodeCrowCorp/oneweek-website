@@ -3,5 +3,5 @@
 	import Footer from '$lib/components/Global/Footer.svelte'
 </script>
 
-<div class="hero bg-base-200">Contract History</div>
+<div class="hero bg-base-200">Job Post and Contract History</div>
 <Footer />

@@ -27,13 +27,13 @@ export const handle = onHandle(async ({ event, resolve }) => {
 
 	if (token && userId) {
 		if (!user) {
-			// const response = await get(`auth/me`, { userId, token })
-			// if (response) {
-			// 	if (response.freshJwt) {
-			// 		token = response.freshJwt
-			// 	}
-			// 	user = response.user
-			// }
+			const response = await get(`auth/me`, { userId, token })
+			if (response) {
+				if (response.freshJwt) {
+					token = response.freshJwt
+				}
+				user = response.user
+			}
 		} else {
 			if (user.isBanned) {
 				const cookieItem = ['token', 'userId', 'user']
@@ -66,17 +66,25 @@ export const handle = onHandle(async ({ event, resolve }) => {
 	}
 
 	if (Authenticate({ pathname, user_role: role || 'user' })) {
-		if (maintenanceMode) {
-			if (pathname === '/maintenance') {
-				return await resolve(event)
-			} else {
-				redirect(302, '/maintenance')
-			}
+		if (env.PUBLIC_FEATURE_WAITLIST === 'true') {
+			redirect(302, '/')
 		} else {
-			if (pathname === '/maintenance') {
-				redirect(302, '/dashboard')
+			if (maintenanceMode) {
+				if (pathname === '/maintenance') {
+					return await resolve(event)
+				} else {
+					redirect(302, '/maintenance')
+				}
 			} else {
-				return await resolve(event)
+				if (
+					pathname === '/maintenance' ||
+					(pathname === '/login' && userId) ||
+					(pathname === '/dashboard' && !userId)
+				) {
+					redirect(302, '/')
+				} else {
+					return await resolve(event)
+				}
 			}
 		}
 	} else {

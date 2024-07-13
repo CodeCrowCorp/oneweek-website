@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { page } from '$app/stores'
+	import Login from '$lib/components/Global/Login.svelte'
 </script>
 
-<div class="hero min-h-screen bg-base-200">Login</div>
+<div class="flex justify-center">
+	<Login />
+</div>

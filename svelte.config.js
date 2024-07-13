@@ -14,9 +14,11 @@ const config = {
 		// 	svgo: true
 		// })
 	],
-
 	kit: {
 		adapter: adapter()
+	},
+	compilerOptions: {
+		runes: true
 	}
 }
 
