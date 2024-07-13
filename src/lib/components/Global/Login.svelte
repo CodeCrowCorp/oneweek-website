@@ -6,7 +6,6 @@
 	import IconSocialApple from '$lib/assets/icons/social/IconSocialApple.svelte'
 
 	let isAppleHovered = $state(false)
-	let { waitlistWorkType } = $props<{ waitlistWorkType: number }>()
 </script>
 
 <div class="modal-box relative bg-base-200">
@@ -14,17 +13,15 @@
 		{#if env.PUBLIC_CROSS_ORIGIN === 'false'}
 			<a
 				class="btn w-full bg-black hover:bg-gray-800 text-white gap-4 border-none hover:text-white"
-				href="{env.PUBLIC_API_URL}/auth/github?workType={waitlistWorkType}">
+				href="{env.PUBLIC_API_URL}/auth/github">
 				<IconSocialGitHubInverse />
 				Log in with GitHub</a>
-			<a
-				class="btn w-full btn-outline gap-4"
-				href="{env.PUBLIC_API_URL}/auth/google?workType={waitlistWorkType}">
+			<a class="btn w-full btn-outline gap-4" href="{env.PUBLIC_API_URL}/auth/google">
 				<IconSocialGoogle />
 				Log in with Google</a>
 			<a
 				class="btn w-full btn-outline gap-4"
-				href="{env.PUBLIC_API_URL}/auth/apple?workType={waitlistWorkType}"
+				href="{env.PUBLIC_API_URL}/auth/apple"
 				onmouseenter={() => (isAppleHovered = true)}
 				onmouseleave={() => (isAppleHovered = false)}>
 				<IconSocialApple {isAppleHovered} />
@@ -36,8 +33,7 @@
 					await getHref({
 						provider: 'github',
 						apiUrl: env.PUBLIC_API_URL,
-						xApiKey: env.PUBLIC_X_API_KEY,
-						waitlistWorkType
+						xApiKey: env.PUBLIC_X_API_KEY
 					})}>
 				<IconSocialGitHubInverse />
 				Log in with GitHub</button>
@@ -47,8 +43,7 @@
 					await getHref({
 						provider: 'google',
 						apiUrl: env.PUBLIC_API_URL,
-						xApiKey: env.PUBLIC_X_API_KEY,
-						waitlistWorkType
+						xApiKey: env.PUBLIC_X_API_KEY
 					})}>
 				<IconSocialGoogle />
 				Log in with Google</button>
@@ -60,8 +55,7 @@
 					await getHref({
 						provider: 'apple',
 						apiUrl: env.PUBLIC_API_URL,
-						xApiKey: env.PUBLIC_X_API_KEY,
-						waitlistWorkType
+						xApiKey: env.PUBLIC_X_API_KEY
 					})}>
 				<IconSocialApple {isAppleHovered} />
 				Log in with Apple</button>

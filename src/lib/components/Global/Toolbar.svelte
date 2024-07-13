@@ -1,6 +1,7 @@
 <script>
 	import { page } from '$app/stores'
 	import { env } from '$env/dynamic/public'
+	import { PUBLIC_FEATURE_WAITLIST } from '$env/static/public'
 	import IconDownChevron from '$lib/assets/icons/IconDownChevron.svelte'
 	import IconLogo from '$lib/assets/icons/IconLogo.svelte'
 	import IconMenu from '$lib/assets/icons/IconMenu.svelte'
@@ -63,40 +64,40 @@
 				<!-- <li><a href="/reports">Reports</a></li> -->
 			</ul>
 		</div>
-	{/if}
-	<div class="navbar-end"></div>
-	{#if $page.data.user?.userId}
-		<div class="flex-none gap-2">
-			{#if !env.PUBLIC_FEATURE_WAITLIST}
-				<div class="form-control">
-					<label class="input input-bordered flex items-center gap-2">
-						<input type="text" placeholder="Search" class="w-24 md:w-auto" />
-						<IconSearch />
-					</label>
-				</div>
-			{/if}
-			<div class="dropdown dropdown-end">
-				<div tabindex="0" role="button" class="btn btn-ghost btn-square avatar">
-					<div class="w-10 rounded-md">
-						<img alt="user avatar" src={$page.data.user.user.avatar} />
+		<div class="navbar-end"></div>
+		{#if $page.data.user?.userId}
+			<div class="flex-none gap-2">
+				{#if !env.PUBLIC_FEATURE_WAITLIST}
+					<div class="form-control">
+						<label class="input input-bordered flex items-center gap-2">
+							<input type="text" placeholder="Search" class="w-24 md:w-auto" />
+							<IconSearch />
+						</label>
 					</div>
+				{/if}
+				<div class="dropdown dropdown-end">
+					<div tabindex="0" role="button" class="btn btn-ghost btn-square avatar">
+						<div class="w-10 rounded-md">
+							<img alt="user avatar" src={$page.data.user.user.avatar} />
+						</div>
+					</div>
+					<ul
+						tabindex="0"
+						class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+						{#if !env.PUBLIC_FEATURE_WAITLIST}
+							<li><a href="/settings">Settings</a></li>
+						{/if}
+						<li><a href="https://codecrow.io/legal" target="_blank">Legal</a></li>
+						<form action="/logout" method="POST">
+							<li>
+								<button class="custom-menu-item" type="submit"> Logout </button>
+							</li>
+						</form>
+					</ul>
 				</div>
-				<ul
-					tabindex="0"
-					class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-					{#if !env.PUBLIC_FEATURE_WAITLIST}
-						<li><a href="/settings">Settings</a></li>
-					{/if}
-					<li><a href="https://codecrow.io/legal" target="_blank">Legal</a></li>
-					<form action="/logout" method="POST">
-						<li>
-							<button class="custom-menu-item" type="submit"> Logout </button>
-						</li>
-					</form>
-				</ul>
 			</div>
-		</div>
-	{:else}
-		<a class="btn btn-primary" href={env.PUBLIC_FEATURE_WAITLIST ? '/waitlist' : '/login'}>Login</a>
+		{:else}
+			<a class="btn btn-primary" href="/login">Login</a>
+		{/if}
 	{/if}
 </div>
