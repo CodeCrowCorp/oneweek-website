@@ -17,7 +17,7 @@
 			<a href="https://discord.mage.stream" target="_blank" rel="noreferrer">
 				<IconSocialDiscord />
 			</a>
-			<a href="https://twitter.com/codecrowcorp" target="_blank" rel="noreferrer">
+			<a href="https://twitter.com/gagansuie" target="_blank" rel="noreferrer">
 				<IconSocialTwitter2 />
 			</a>
 			<a href="https://twitch.tv/gagansuie" target="_blank" rel="noreferrer">

@@ -66,21 +66,25 @@ export const handle = onHandle(async ({ event, resolve }) => {
 	}
 
 	if (Authenticate({ pathname, user_role: role || 'user' })) {
-		if (maintenanceMode) {
-			if (pathname === '/maintenance') {
-				return await resolve(event)
-			} else {
-				redirect(302, '/maintenance')
-			}
+		if (env.PUBLIC_FEATURE_WAITLIST === 'true') {
+			redirect(302, '/')
 		} else {
-			if (
-				pathname === '/maintenance' ||
-				(pathname === '/login' && userId) ||
-				(pathname === '/dashboard' && !userId)
-			) {
-				redirect(302, '/')
+			if (maintenanceMode) {
+				if (pathname === '/maintenance') {
+					return await resolve(event)
+				} else {
+					redirect(302, '/maintenance')
+				}
 			} else {
-				return await resolve(event)
+				if (
+					pathname === '/maintenance' ||
+					(pathname === '/login' && userId) ||
+					(pathname === '/dashboard' && !userId)
+				) {
+					redirect(302, '/')
+				} else {
+					return await resolve(event)
+				}
 			}
 		}
 	} else {
