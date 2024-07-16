@@ -14,9 +14,9 @@
 			<a href="https://github.com/CodeCrowCorp" target="_blank" rel="noreferrer">
 				<IconSocialGitHubInverse />
 			</a>
-			<a href="https://discord.mage.stream" target="_blank" rel="noreferrer">
+			<!-- <a href="https://discord.mage.stream" target="_blank" rel="noreferrer">
 				<IconSocialDiscord />
-			</a>
+			</a> -->
 			<a href="https://twitter.com/gagansuie" target="_blank" rel="noreferrer">
 				<IconSocialTwitter2 />
 			</a>
