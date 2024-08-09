@@ -3,7 +3,7 @@ import type { LayoutServerLoad } from './$types'
 import { env } from '$env/dynamic/public'
 
 export const load = (({ locals }: { locals: any }) => {
-	if (env.PUBLIC_FEATURE_WAITLIST) {
+	if (env.PUBLIC_FEATURE_WAITLIST === 'true') {
 		throw redirect(307, '/waitlist')
 	} else {
 		if (!locals.user) {
