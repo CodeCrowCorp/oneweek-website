@@ -1,5 +1,12 @@
 <script lang="ts">
-	import { page } from '$app/stores'
+	import DrawerMessages from '$lib/components/Messages/DrawerMessages.svelte'
+	let { data } = $props()
 </script>
 
-<div class="hero min-h-screen bg-base-200">Messages</div>
+<div class="hero bg-base-200">
+	{#await data.lazy?.messages}
+		<div>Retrieving registered users...</div>
+	{:then value}
+		<DrawerMessages messages={value} />
+	{/await}
+</div>
