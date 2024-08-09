@@ -19,6 +19,6 @@ export const actions: Actions = {
 		})
 
 		// redirect the user
-		redirect(302, env.PUBLIC_FEATURE_WAITLIST ? '/waitlist' : '/landing')
+		redirect(302, env.PUBLIC_FEATURE_WAITLIST === 'true' ? '/waitlist' : '/landing')
 	}
 }

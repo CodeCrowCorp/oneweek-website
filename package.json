@@ -19,11 +19,11 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
-		"@playwright/test": "1.44.1",
+		"@playwright/test": "1.46.0",
 		"@sveltejs/adapter-cloudflare": "^4.0.1",
 		"@sveltejs/kit": "^2.0.6",
-		"@typescript-eslint/eslint-plugin": "^7.0.1",
-		"@typescript-eslint/parser": "^7.0.1",
+		"@typescript-eslint/eslint-plugin": "^8.0.0",
+		"@typescript-eslint/parser": "^8.0.0",
 		"autoprefixer": "^10.4.13",
 		"concurrently": "^8.0.1",
 		"cross-env": "^7.0.3",
@@ -42,7 +42,8 @@
 	},
 	"dependencies": {
 		"@jill64/sentry-sveltekit-cloudflare": "^1.7.15",
-		"@stripe/stripe-js": "^3.0.10",
+		"@sentry/browser": "^8.24.0",
+		"@stripe/stripe-js": "^4.1.0",
 		"daisyui": "^4.7.2",
 		"nprogress": "^0.2.0",
 		"playwright-e2e-coverage-report": "^1.0.28",

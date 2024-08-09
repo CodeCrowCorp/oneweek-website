@@ -7,7 +7,7 @@
 	import IconSearch from '$lib/assets/icons/IconSearch.svelte'
 </script>
 
-<div class="navbar bg-base-100">
+<div class="navbar bg-base-100 max-w-6xl mx-auto">
 	<div class="navbar-start">
 		{#if env.PUBLIC_FEATURE_WAITLIST === 'false'}
 			<div class="dropdown">
