@@ -42,6 +42,7 @@
 	},
 	"dependencies": {
 		"@jill64/sentry-sveltekit-cloudflare": "^1.7.15",
+		"@sentry/browser": "^8.24.0",
 		"@stripe/stripe-js": "^4.1.0",
 		"daisyui": "^4.7.2",
 		"nprogress": "^0.2.0",

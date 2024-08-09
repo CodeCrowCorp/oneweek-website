@@ -8,9 +8,9 @@
 	import IconSearch from '$lib/assets/icons/IconSearch.svelte'
 </script>
 
-<div class="navbar bg-base-100">
+<div class="navbar bg-base-100 max-w-6xl mx-auto">
 	<div class="navbar-start">
-		{#if !env.PUBLIC_FEATURE_WAITLIST}
+		{#if !(env.PUBLIC_FEATURE_WAITLIST === 'true')}
 			<div class="dropdown">
 				<label tabindex="0" class="btn btn-ghost lg:hidden"><IconMenu /></label>
 				<ul
@@ -34,7 +34,7 @@
 		{/if}
 		<a
 			class="btn btn-ghost normal-case text-xl"
-			href={env.PUBLIC_FEATURE_WAITLIST
+			href={env.PUBLIC_FEATURE_WAITLIST === 'true'
 				? '/waitlist'
 				: $page.data.user?.userId
 					? '/dashboard'
@@ -42,7 +42,7 @@
 			><IconLogo /> <span class="hidden xl:inline">OneWeek</span>
 		</a>
 	</div>
-	{#if !env.PUBLIC_FEATURE_WAITLIST}
+	{#if !(env.PUBLIC_FEATURE_WAITLIST === 'true')}
 		<div class="navbar-center hidden lg:flex">
 			<ul class="menu menu-horizontal px-1">
 				<div class="dropdown dropdown-end">
@@ -67,7 +67,7 @@
 		<div class="navbar-end"></div>
 		{#if $page.data.user?.userId}
 			<div class="flex-none gap-2">
-				{#if !env.PUBLIC_FEATURE_WAITLIST}
+				{#if !(env.PUBLIC_FEATURE_WAITLIST === 'true')}
 					<div class="form-control">
 						<label class="input input-bordered flex items-center gap-2">
 							<input type="text" placeholder="Search" class="w-24 md:w-auto" />
@@ -84,7 +84,7 @@
 					<ul
 						tabindex="0"
 						class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-						{#if !env.PUBLIC_FEATURE_WAITLIST}
+						{#if !(env.PUBLIC_FEATURE_WAITLIST === 'true')}
 							<li><a href="/settings">Settings</a></li>
 						{/if}
 						<li><a href="https://codecrow.io/legal" target="_blank">Legal</a></li>
