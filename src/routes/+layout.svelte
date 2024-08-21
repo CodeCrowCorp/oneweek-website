@@ -29,26 +29,24 @@
 	<link rel="stylesheet" href="/fonts/montserrat.css" />
 </svelte:head>
 
-<div class="sm:px-40">
-	<Toolbar />
-	<main>
-		<div class="area">
-			<ul class="circles">
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-			</ul>
-		</div>
-		<slot />
-	</main>
-</div>
+<Toolbar />
+<main>
+	<div class="area">
+		<ul class="circles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</main>
+<slot />
 
 <style>
 	/*Start Animations*/
@@ -106,10 +104,11 @@
 
 	.circles {
 		position: absolute;
-		top: 0;
-		left: 0;
+		inset: 0;
 		width: 100%;
 		height: 96%;
+		min-height: 400px;
+		max-height: 700px;
 		overflow: hidden;
 	}
 

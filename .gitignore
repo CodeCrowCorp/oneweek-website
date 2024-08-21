@@ -12,3 +12,4 @@ coverage/
 e2eresults.json
 package-lock.json
 src/lib/assets/styles/tailwind-output.css
+pnpm-lock.yaml
